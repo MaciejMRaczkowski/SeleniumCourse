@@ -1,4 +1,4 @@
-package zadaniaDzien4;
+package zadaniaDzien4.konfiguracja;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
