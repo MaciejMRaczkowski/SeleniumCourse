@@ -1,17 +1,13 @@
 package zadaniaDzien4.konfiguracja;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import utils.Utils;
 
 public class Zadanie3 {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/drivers/chromedriver.exe");
-
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        WebDriver driver = Utils.createFirefoxDriver();
 
 //        Wejdź na stronę: https://www.google.com
         driver.get("https://www.google.com");
