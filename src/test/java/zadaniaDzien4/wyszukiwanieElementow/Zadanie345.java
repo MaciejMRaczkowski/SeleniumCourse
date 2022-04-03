@@ -1,6 +1,7 @@
 package zadaniaDzien4.wyszukiwanieElementow;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +13,7 @@ public class Zadanie345 {
 
     public static void main(String[] args) {
 
-        String userEmail = "ran4324m123423423email@mail.com";
+        String userEmail = "ran432kfhjemail@mail.com";
         String title = "Mr";
 
         System.setProperty("webdriver.chrome.driver",
@@ -36,19 +37,36 @@ public class Zadanie345 {
         // wyszukanie first name
         // WebElement firstNameInput = driver.findElement(By.xpath("//*[@id='customer_firstname']"));
         WebElement firstNameInput = driver.findElement(By.xpath("//*[@id=\"customer_firstname\"]"));
-        firstNameInput.sendKeys("John");
+        if (firstNameInput.isDisplayed()) {
+            firstNameInput.sendKeys("John");
+        } else {
+            throw new ElementNotInteractableException("firstNameInput");
+        }
 
         // wyszukanie last name
         WebElement lastNameInput = driver.findElement(By.xpath("//*[@id=\"customer_lastname\"]"));
-        lastNameInput.sendKeys("Doe");
+        if (lastNameInput.isDisplayed()) {
+            lastNameInput.sendKeys("Doe");
+        } else {
+            throw new ElementNotInteractableException("lastNameInput");
+        }
 
         // wyszukanie email
         WebElement emailInput = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        emailInput.clear();
-        emailInput.sendKeys(userEmail);
+        if (emailInput.isDisplayed()) {
+            emailInput.clear();
+            emailInput.sendKeys(userEmail);
+        } else {
+            throw new ElementNotInteractableException("emailInput");
+        }
 
         // wyszukanie password
-        driver.findElement(By.xpath("//*[@id=\"passwd\"]")).sendKeys("qwerty12345");
+        WebElement passwordInput = driver.findElement(By.xpath("//*[@id=\"passwd\"]"));
+        if (passwordInput.isDisplayed()) {
+            passwordInput.sendKeys("qwerty12345");
+        } else {
+            throw new ElementNotInteractableException("passwordInput");
+        }
 
         // dropdowny
         WebElement dayElement = driver.findElement(By.id("days"));
@@ -64,10 +82,17 @@ public class Zadanie345 {
         yearsSelect.selectByValue("2000");
 
         // wyszukanie przycisku Register i klikniecie
-        driver.findElement(By.xpath("//*[@id=\"submitAccount\"]")).click();
+        WebElement submitAccountButton = driver.findElement(By.xpath("//*[@id=\"submitAccount\"]"));
+        if (submitAccountButton.isDisplayed()) {
+            submitAccountButton.click();
+        } else {
+            throw new ElementNotInteractableException("submitAccountButton");
+        }
 
         // cssSelector
         WebElement myAddressesElement = driver.findElement(By.cssSelector("#center_column > div > div > ul > li:nth-child(4) > a > span"));
         WebElement myPersonalInformationElement = driver.findElement(By.cssSelector("#center_column > div > div > ul > li:nth-child(5) > a > span"));
+
+        driver.quit();
     }
 }
