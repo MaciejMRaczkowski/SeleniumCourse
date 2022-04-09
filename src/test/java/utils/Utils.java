@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.time.Duration;
+
 public class Utils {
 
     public static WebDriver createChromeDriver() {
@@ -34,6 +36,8 @@ public class Utils {
         } else {
             throw new IllegalArgumentException("driverName " + driverName + " is not supported");
         }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         return driver;
     }
