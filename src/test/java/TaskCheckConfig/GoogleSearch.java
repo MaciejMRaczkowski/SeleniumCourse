@@ -14,6 +14,7 @@ public class GoogleSearch {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+
         driver.get("http://www.google.com");
         driver.findElement(By.id("L2AGLb")).click();
         WebElement element = driver.findElement(By.name("q"));
