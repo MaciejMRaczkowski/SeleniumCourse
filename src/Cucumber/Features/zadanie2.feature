@@ -11,5 +11,5 @@ Feature: New account
 
     Examples:
     |firstName|lastName|email                   |password|
-    |Mariola  |Test    |34mail34@test.com       |qwerty  |
-    |Janusz   |Testowy |434mail5@test.com       |qwerty  |
+    |Mariola  |Test    |34mai54l34@test.com       |qwerty  |
+    #|Janusz   |Testowy |434mail5@test.com       |qwerty  |

@@ -6,14 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AuthenticationPage {
-
     private WebDriver driver;
 
     @FindBy(id = "email_create")
-    private WebElement newUserEmailInput;
+    private WebElement emailInput;
 
     @FindBy(id = "SubmitCreate")
-    private WebElement createAnAccountButton;
+    private WebElement signInButton;
 
     @FindBy(id = "email")
     private WebElement loginEmailInput;
@@ -29,14 +28,22 @@ public class AuthenticationPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void startCreatingAnAccount(String email) {
-        newUserEmailInput.sendKeys(email);
-        createAnAccountButton.click();
+    public void startCreateAccount(String email) {
+        emailInput.sendKeys(email);
+        signInButton.click();
     }
+    public void inputRegistrationEmail(String email){
+        emailInput.sendKeys(email);
+    }
+    public void clickSignInButton(){
+        signInButton.click();
+    }
+
 
     public void logIn(String email, String password){
         loginEmailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         submitLoginButton.click();
     }
+
 }

@@ -30,10 +30,10 @@ public class Zadanie1Test {
         driver.findElement(By.xpath("//*[@id=\"header\"]/div[3]/div/div/div[7]/ul/li/a/span")).click();
 
         AuthenticationPage authenticationPage = new AuthenticationPage(driver);
-        authenticationPage.startCreatingAnAccount("jo3432445hnd2q321@mail.com");
+        authenticationPage.startCreateAccount("jo3432445hnd2q321@mail.com");
 
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.registerUser("John", "Doe", "qwerty");
+        registrationPage.register("John", "Doe", "qwerty");
 
         WebElement alert = driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[1]"));
 
