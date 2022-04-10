@@ -13,14 +13,14 @@ public class GoogleSearch {
 
     private WebDriver driver;
 
-    @Given("an open browser with google.com")
-    public void anOpenBrowserWithGoogleCom() {
+    @Given("an open browser with {string}")
+    public void anOpenBrowserWithGoogleCom(String website) {
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/drivers/chromedriver.exe");
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("http://www.google.com");
+        driver.get(website);
     }
 
     @When("a keyword {string} is entered in input field")
