@@ -15,6 +15,15 @@ public class AuthenticationPage {
     @FindBy(id = "SubmitCreate")
     private WebElement createAnAccountButton;
 
+    @FindBy(id = "email")
+    private WebElement loginEmailInput;
+
+    @FindBy(id = "passwd")
+    private WebElement passwordInput;
+
+    @FindBy(id = "SubmitLogin")
+    private WebElement submitLoginButton;
+
     public AuthenticationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -23,5 +32,11 @@ public class AuthenticationPage {
     public void startCreatingAnAccount(String email) {
         newUserEmailInput.sendKeys(email);
         createAnAccountButton.click();
+    }
+
+    public void logIn(String email, String password){
+        loginEmailInput.sendKeys(email);
+        passwordInput.sendKeys(password);
+        submitLoginButton.click();
     }
 }
