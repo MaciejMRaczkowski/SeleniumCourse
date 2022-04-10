@@ -5,7 +5,7 @@ Feature: Add address
     When user click add my first address
     When user fills form with data "<address>", "<postalCode>", "<city>", "<country>", "<homePhone>"
     And click Save button to add first address
-    Then first address is added
+    Then first address is added and contains "<address>", "<postalCode>", "<city>", "<country>", "<homePhone>"
 
     Examples:
       |address |postalCode|city  |country |homePhone|

@@ -29,7 +29,6 @@ public class Zadanie4Steps {
 
         AuthenticationPage authenticationPage = new AuthenticationPage(driver);
         authenticationPage.logIn("johnd@mail.com", "qwerty");
-
     }
 
     @When("user click add my first address")
@@ -41,17 +40,26 @@ public class Zadanie4Steps {
     public void userFillsFormWithData(String address, String postalCode, String city, String country, String homePhone) {
         CreateNewAddressPage createNewAddressPage = new CreateNewAddressPage(driver);
         createNewAddressPage.fillForm(address, postalCode, city, country, homePhone);
-
     }
+
     @And("click Save button to add first address")
     public void clickSaveButtonToAddFirstAddress() {
         CreateNewAddressPage createNewAddressPage = new CreateNewAddressPage(driver);
         createNewAddressPage.createAddress();
     }
 
-    @Then("first address is added")
-    public void firstAddressIsAdded() {
+    @Then("first address is added and contains {string}, {string}, {string}, {string}, {string}")
+    public void firstAddressIsAdded(String address, String postalCode, String city, String country, String homePhone) {
+        // idealnie byloby zrobic do tego oddzielny page object
         WebElement firstAddress = driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/div/div/ul"));
+
+        String firstAddressText = firstAddress.getText();
+
         Assertions.assertTrue(firstAddress.isDisplayed());
+        Assertions.assertTrue(firstAddressText.contains(address));
+        Assertions.assertTrue(firstAddressText.contains(postalCode));
+        Assertions.assertTrue(firstAddressText.contains(city));
+        Assertions.assertTrue(firstAddressText.contains(country));
+        Assertions.assertTrue(firstAddressText.contains(homePhone));
     }
 }
